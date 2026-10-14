@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071c28">
+  <title>ClearAir — Breathe Beyond</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-glow"></div>
+
+  <!-- WELCOME -->
+  <section id="welcome" class="welcome-screen">
+    <div class="scenery">
+      <span class="sun"></span>
+      <span class="mountain mountain-back"></span>
+      <span class="mountain mountain-front"></span>
+      <span class="tree tree-left">♣</span>
+      <span class="tree tree-right">♣</span>
+      <div class="land-label">A FRESHER WORLD STARTS HERE</div>
+    </div>
+
+    <div class="welcome-content">
+      <div class="brand large-brand"><span>✳</span> ClearAir</div>
+      <p class="eyebrow">BREATHE BEYOND LIMITS</p>
+      <h1>Your world.<br> Your air.<br><span>Your future.</span></h1>
+      <p class="lead">
+        Explore your environment, discover cleaner places,
+        and make every breath count.
+      </p>
+      <button class="btn primary" onclick="showScreen('login')">
+        Get started <span>↗</span>
+      </button>
+      <button class="btn ghost" onclick="showScreen('login')">
+        I already have an account
+      </button>
+      <p class="fine">AIR QUALITY • INSIGHTS • A HEALTHIER TOMORROW</p>
+    </div>
+  </section>
+
+  <!-- LOGIN -->
+  <section id="login" class="auth-screen" hidden>
+    <div class="auth-art">
+      <div class="brand"><span>✳</span> ClearAir</div>
+      <div class="art-orbit"><div class="art-leaf">🌿</div></div>
+      <p class="eyebrow">YOUR PERSONAL AIR COMPANION</p>
+      <h2>Every breath<br>tells a story.</h2>
+      <p>Know the air. Find your balance.</p>
+    </div>
+
+    <div class="auth-form-wrap">
+      <button class="back" onclick="showScreen('welcome')">← Back</button>
+      <div class="auth-form">
+        <p class="eyebrow">WELCOME BACK</p>
+        <h1>Let's breathe better.</h1>
+        <p class="muted">Enter your details to explore ClearAir.</p>
+
+        <div class="auth-tabs">
+          <button id="loginTab" class="tab active"
+                  onclick="setAuthMode('login')">Log in</button>
+          <button id="signupTab" class="tab"
+                  onclick="setAuthMode('signup')">Create account</button>
+        </div>
+
+        <form id="authForm">
+          <div id="nameField" hidden>
+            <label for="fullName">Full name</label>
+            <input id="fullName" autocomplete="name"
+                   placeholder="Your name">
+          </div>
+
+          <label for="email">Email address</label>
+          <input id="email" type="email" autocomplete="email"
+                 placeholder="you@example.com" required>
+
+          <label for="password">Password</label>
+          <div class="password-wrap">
+            <input id="password" type="password"
+                   autocomplete="current-password"
+                   placeholder="Enter a demo password"
+                   minlength="4" required>
+            <button type="button" class="eye"
+                    onclick="togglePassword()">Show</button>
+          </div>
+
+          <p id="authError" class="error" role="alert"></p>
+          <button class="btn primary full" type="submit"
+                  id="authSubmit">Log in ↗</button>
+        </form>
+
+        <p class="fine">Demo authentication only. No real account is created.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATION -->
+  <section id="application" hidden>
+    <header class="topbar">
+      <a class="brand" href="#" onclick="showPage('home');return false">
+        <span>✳</span> ClearAir
+      </a>
+      <nav class="desktop-nav">
+        <button data-page="home" onclick="showPage('home')">Home</button>
+        <button data-page="explore" onclick="showPage('explore')">Explore</button>
+        <button data-page="insights" onclick="showPage('insights')">Insights</button>
+      </nav>
+      <button class="avatar" onclick="showPage('profile')"
+              aria-label="Open profile">👤</button>
+    </header>
+
+    <main class="app-container">
+
+      <!-- HOME PAGE -->
+      <section id="page-home" class="page">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">MONDAY MOOD: FRESH AIR</p>
+            <h1>Hey, <span id="helloName">Explorer</span> <span>✦</span></h1>
+            <p class="muted">Let's see how your world is breathing.</p>
+          </div>
+          <span class="demo-chip">● DEMO DATA</span>
+        </div>
+
+        <div class="home-grid">
+          <article class="hero-card">
+            <div>
+              <p class="eyebrow">YOUR AIR RIGHT NOW</p>
+              <p class="muted small" id="homeLocation">Chennai · Sample location</p>
+              <div class="aqi-number" id="homeAQI">42</div>
+              <span id="homeStatus" class="status good">Good</span>
+              <h2 id="homeMessage">A lovely day to get outside.</h2>
+              <p class="muted">All readings on this demo screen are simulated.</p>
+              <button class="btn primary" onclick="showPage('explore')">
+                Explore places ↗
+              </button>
+            </div>
+            <div class="ring" id="homeRing">
+              <div class="ring-inner">
+                <span>✳</span>
+                <strong id="ringAQI">42</strong>
+                <small>AQI</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <p class="eyebrow">TODAY'S DISCOVERY</p>
+            <div class="feature-illustration">🌱</div>
+            <h2>Small choices. Big impact.</h2>
+            <p class="muted">Explore lower-AQI sample locations and check local conditions.</p>
+            <button class="text-button" onclick="showPage('insights')">
+              Discover insights →
+            </button>
+          </article>
+        </div>
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">THE DETAILS</p>
+            <h2>Atmosphere snapshot</h2>
+          </div>
+          <span class="muted small">Sample readings</span>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><span>◈</span><p>PM2.5</p>
+            <h3 id="pm25">12 <small>µg/m³</small></h3></article>
+          <article class="stat-card"><span>◉</span><p>PM10</p>
+            <h3 id="pm10">24 <small>µg/m³</small></h3></article>
+          <article class="stat-card"><span>☀</span><p>Temperature</p>
+            <h3 id="temp">29 <small>°C</small></h3></article>
+          <article class="stat-card"><span>≈</span><p>Humidity</p>
+            <h3 id="humidity">60 <small>%</small></h3></article>
+        </div>
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">EXPLORE THE DIFFERENCE</p>
+            <h2>Places worth checking</h2>
+          </div>
+          <button class="text-button" onclick="showPage('explore')">View all →</button>
+        </div>
+        <div id="homePlaces" class="place-grid"></div>
+      </section>
+
+      <!-- EXPLORE PAGE -->
+      <section id="page-explore" class="page" hidden>
+        <p class="eyebrow">YOUR WORLD, DISCOVERED</p>
+        <h1>Explore the air.</h1>
+        <p class="muted">Search areas, compare sample AQI values, and find lower readings.</p>
+
+        <div class="explore-banner">
+          <div><span class="eyebrow">THE CLEANER-AIR QUEST</span>
+            <h2>Every location has a story.</h2>
+            <p>Compare areas to see where sample AQI is higher or lower.</p>
+          </div>
+          <span class="big-emoji">🧭</span>
+        </div>
+
+        <div class="filters">
+          <input id="search" type="search" placeholder="⌕  Search a city or area...">
+          <select id="sort">
+            <option value="highest">Highest AQI</option>
+            <option value="lowest">Lowest AQI</option>
+            <option value="name">Name A–Z</option>
+          </select>
+          <select id="qualityFilter">
+            <option value="all">All levels</option>
+            <option value="good">Good</option>
+            <option value="moderate">Moderate</option>
+            <option value="poor">Poor</option>
+          </select>
+        </div>
+
+        <p class="muted small" id="resultCount"></p>
+        <div id="explorePlaces" class="place-grid"></div>
+        <p id="emptyState" class="muted" hidden>No matches. Try another search.</p>
+        <p class="disclaimer">These are fictional demonstration values, not a live pollution map.</p>
+      </section>
+
+      <!-- INSIGHTS PAGE -->
+      <section id="page-insights" class="page" hidden>
+        <p class="eyebrow">LOOK BEYOND THE NUMBER</p>
+        <h1>Your air insights.</h1>
+        <p class="muted">Understand trends and make informed everyday choices.</p>
+
+        <article class="insight-hero">
+          <span class="big-emoji">🌤️</span>
+          <p class="eyebrow">YOUR SELECTED LOCATION</p>
+          <h2 id="insightTitle">Chennai</h2>
+          <p id="insightText">Sample AQI 42 — Good.</p>
+          <span class="demo-chip">SIMULATED DATA</span>
+        </article>
+
+        <div class="section-heading">
+          <div><p class="eyebrow">SAMPLE TREND</p><h2>AQI through the day</h2></div>
+        </div>
+        <article class="chart-card">
+          <div class="chart-legend"><span>● Demo AQI values</span><span>Not a forecast</span></div>
+          <div id="trendChart" class="trend-chart"></div>
+          <div class="chart-axis"><span>Morning</span><span>Afternoon</span><span>Evening</span></div>
+        </article>
+
+        <div class="section-heading"><div><p class="eyebrow">YOUR EVERYDAY GUIDE</p>
+          <h2>Make a fresher choice</h2></div></div>
+        <div class="tips-grid">
+          <article class="tip-card"><span>🚶</span><h3>Choose your route</h3>
+            <p>When practical, use routes away from heavy traffic.</p></article>
+          <article class="tip-card"><span>🌳</span><h3>Find green spaces</h3>
+            <p>Check current local readings before outdoor activities.</p></article>
+          <article class="tip-card"><span>🪟</span><h3>Check indoor air</h3>
+            <p>Ventilate when outdoor conditions are suitable.</p></article>
+          <article class="tip-card"><span>🔔</span><h3>Stay informed</h3>
+            <p>Use trusted monitoring sources for real-time warnings.</p></article>
+        </div>
+      </section>
+
+      <!-- PROFILE PAGE -->
+      <section id="page-profile" class="page" hidden>
+        <p class="eyebrow">YOUR SPACE</p>
+        <h1>Your profile.</h1>
+        <article class="profile-card">
+          <div class="profile-avatar">🌿</div>
+          <h2 id="profileName">Explorer</h2>
+          <p class="muted" id="profileEmail"></p>
+          <span class="demo-chip">LOCAL DEMO SESSION</span>
+        </article>
+
+        <div class="section-heading"><div><p class="eyebrow">MAKE IT YOURS</p>
+          <h2>Preferences</h2></div></div>
+        <article class="settings-card">
+          <div><strong>Air quality notifications</strong>
+            <p class="muted small">Request permission for browser alerts.</p></div>
+          <button class="btn secondary" id="notificationBtn">Enable</button>
+        </article>
+        <article class="settings-card">
+          <div><strong>Reduce animations</strong>
+            <p class="muted small">Turn off decorative movement.</p></div>
+          <button class="btn secondary" id="motionBtn">Off</button>
+        </article>
+        <article class="settings-card">
+          <div><strong>About ClearAir</strong>
+            <p class="muted small">This prototype uses simulated air-quality data.</p></div>
+          <span>ⓘ</span>
+        </article>
+        <button class="btn danger full" onclick="logout()">Log out</button>
+      </section>
+
+    </main>
+
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <button data-page="home" onclick="showPage('home')"><span>⌂</span>Home</button>
+      <button data-page="explore" onclick="showPage('explore')"><span>⌖</span>Explore</button>
+      <button data-page="insights" onclick="showPage('insights')"><span>⌁</span>Insights</button>
+      <button data-page="profile" onclick="showPage('profile')"><span>♙</span>Profile</button>
+    </nav>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
